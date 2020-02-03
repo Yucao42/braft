@@ -9,8 +9,6 @@ execute_process(
     OUTPUT_VARIABLE OUTPUT_PATH
 )
 
-set(CMAKE_PREFIX_PATH ${OUTPUT_PATH})
-
 include(FindThreads)
 include(FindProtobuf)
 
@@ -19,6 +17,7 @@ if (NOT PROTOBUF_PROTOC_EXECUTABLE)
     set (PROTOBUF_PROTOC_EXECUTABLE "${PROTO_LIB_DIR}/../bin/protoc")
 endif()
 
+message(${PROTOBUF_LIBRARY})
 protobuf_generate_cpp(PROTO_SRC PROTO_HEADER block.proto)
 # include PROTO_HEADER
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -114,6 +113,7 @@ set(DYNAMIC_LIB
     ${CMAKE_THREAD_LIBS_INIT}
     ${GFLAGS_LIBRARY}
     ${PROTOBUF_LIBRARY}
+	${PROTOBUF_LIBRARIES}
     ${GPERFTOOLS_LIBRARIES}
     ${LEVELDB_LIB}
     ${BRAFT_LIB}
