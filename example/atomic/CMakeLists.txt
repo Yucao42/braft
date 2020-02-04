@@ -9,7 +9,6 @@ execute_process(
     OUTPUT_VARIABLE OUTPUT_PATH
 )
 
-set(CMAKE_PREFIX_PATH ${OUTPUT_PATH})
 
 include(FindThreads)
 include(FindProtobuf)

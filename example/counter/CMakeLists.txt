@@ -9,8 +9,6 @@ execute_process(
     OUTPUT_VARIABLE OUTPUT_PATH
 )
 
-set(CMAKE_PREFIX_PATH ${OUTPUT_PATH})
-
 include(FindThreads)
 include(FindProtobuf)
 
@@ -113,6 +111,7 @@ set(DYNAMIC_LIB
     ${CMAKE_THREAD_LIBS_INIT}
     ${GFLAGS_LIBRARY}
     ${PROTOBUF_LIBRARY}
+	${PROTOBUF_LIBRARIES}
     ${GPERFTOOLS_LIBRARIES}
     ${LEVELDB_LIB}
     ${BRAFT_LIB}
